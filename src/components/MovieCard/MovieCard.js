@@ -1,11 +1,15 @@
 import React from "react";
-import { Card } from "react-bootstrap";
+import { Card, Button } from "react-bootstrap";
 import ReactStars from "react-rating-stars-component";
 import "./style.css";
-
-const MovieCard = ({ movie, key }) => {
+import { Link, useNavigate } from "react-router-dom";
+const MovieCard = ({ movie, index }) => {
+  const navigate = useNavigate();
+  const showMovieDetails = (id) => {
+    navigate("/movie-details/${id}");
+  };
   return (
-    <div key={key}>
+    <div>
       <>
         <Card
           style={{
@@ -21,16 +25,23 @@ const MovieCard = ({ movie, key }) => {
         >
           <Card.Img variant="top" src={movie.posterUrl} />
           <Card.Body>
-            <Card.Title>{movie.title}</Card.Title>
+            <Card.Title>
+              <Link to={"/movie-details/${movie.id}"}>{movie.title}</Link>
+            </Card.Title>
             <Card.Text>{movie.description}</Card.Text>
-            <ReactStars
-              count={5}
-              value={movie.rating}
-              // onChange={ratingChanged}
-              size={24}
-              activeColor="#ffd700"
-              edit={false}
-            />
+            <Card.Text>
+              <ReactStars
+                count={5}
+                value={movie.rating}
+                // onChange={ratingChanged}
+                size={24}
+                activeColor="#ffd700"
+                edit={false}
+              />
+            </Card.Text>
+            <Button variant="dark" onClick={() => showMovieDetails(movie.id)}>
+              trailer
+            </Button>
             {/*<Button variant="primary">Go somewhere</Button> */}
           </Card.Body>
         </Card>

@@ -9,6 +9,7 @@ import {
 } from "react-bootstrap";
 import ReactStars from "react-rating-stars-component";
 import AddMovie from "../AddMovie/AddMovie";
+import { Link } from "react-router-dom";
 
 const NavBar = ({
   setRatingChange,
@@ -34,8 +35,8 @@ const NavBar = ({
         <Container>
           <Navbar.Brand href="#home">Movie App</Navbar.Brand>
           <Nav className="me-auto">
-            <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link href="#features">Features</Nav.Link>
+            <Link to="/">Home</Link>
+            <Link to="/movie-details">Movie Details</Link>
             <Nav.Link href="#pricing">Pricing</Nav.Link>
             <Button variant="light" onClick={handleShow}>
               Add New Movie
