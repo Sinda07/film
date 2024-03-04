@@ -6,7 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 const MovieCard = ({ movie, index }) => {
   const navigate = useNavigate();
   const showMovieDetails = (id) => {
-    navigate("/movie-details/${id}");
+    navigate(`/movie-details/${id}`);
   };
   return (
     <div>
@@ -26,7 +26,7 @@ const MovieCard = ({ movie, index }) => {
           <Card.Img variant="top" src={movie.posterUrl} />
           <Card.Body>
             <Card.Title>
-              <Link to={"/movie-details/${movie.id}"}>{movie.title}</Link>
+              <Link to={`/movie-details/${movie.id}`}>{movie.title}</Link>
             </Card.Title>
             <Card.Text>{movie.description}</Card.Text>
             <Card.Text>
